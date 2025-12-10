@@ -1,0 +1,58 @@
+operations:
+  view:
+    - type: web
+      impl: index.html
+actions: actions
+web: web-src
+runtimeManifest:
+  packages:
+    admin-ui-sdk:
+      license: Apache-2.0
+      actions:
+        registration:
+          function: actions/registration/index.js
+          web: "yes"
+          runtime: "nodejs:22"
+          inputs:
+            LOG_LEVEL: debug
+            RUNTIME_NAMESPACE: $AIO_RUNTIME_NAMESPACE
+            MESH_ID: $MESH_ID
+          annotations:
+            require-adobe-auth: true
+            final: true
+    order-comment:
+      license: Apache-2.0
+      actions:
+        admin-config:
+          function: actions/admin-config/index.js
+          web: yes
+          runtime: "nodejs:22"
+          inputs:
+            LOG_LEVEL: debug
+            RUNTIME_NAMESPACE: $AIO_RUNTIME_NAMESPACE
+          annotations:
+            require-adobe-auth: true
+            final: true
+        get-order-comment-grid-column:
+          function: actions/data/orderCommentGridColumn.js
+          web: 'yes'
+          runtime: 'nodejs:22'
+          inputs:
+            LOG_LEVEL: debug
+            # Commerce integration credentials - PaaS
+            COMMERCE_BASE_URL: $COMMERCE_BASE_URL
+            COMMERCE_CONSUMER_KEY: $COMMERCE_CONSUMER_KEY
+            COMMERCE_CONSUMER_SECRET: $COMMERCE_CONSUMER_SECRET
+            COMMERCE_ACCESS_TOKEN: $COMMERCE_ACCESS_TOKEN
+            COMMERCE_ACCESS_TOKEN_SECRET: $COMMERCE_ACCESS_TOKEN_SECRET
+            # IMS Credentials - SaaS
+            OAUTH_CLIENT_SECRETS: $OAUTH_CLIENT_SECRETS
+            OAUTH_CLIENT_ID: $OAUTH_CLIENT_ID
+            OAUTH_SCOPES: $OAUTH_SCOPES
+            OAUTH_TECHNICAL_ACCOUNT_EMAIL: $OAUTH_TECHNICAL_ACCOUNT_EMAIL
+            OAUTH_TECHNICAL_ACCOUNT_ID: $OAUTH_TECHNICAL_ACCOUNT_ID
+            OAUTH_IMS_ORG_ID: $OAUTH_IMS_ORG_ID
+          annotations:
+            require-adobe-auth: true
+            final: true
+        

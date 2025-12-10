@@ -1,0 +1,8 @@
+{
+  "id": "fulcrum_order_comment",
+  "name": "fulcrum_order_comment",
+  "displayName": "Fulcrum - Order Comment",
+  "description": "Out of process Commerce Order Comment on App Builder",
+  "platform": "web",
+  "version": "1.0.0"
+}

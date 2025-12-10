@@ -1,0 +1,44 @@
+{
+  "name": "fulcrum-order-comment",
+  "version": "1.0.0",
+  "author": "Fulcrum Digital Inc. <info@fulcrumdigital.com>",
+  "description": "Fulcrum Order Comment - App Builder - Admin UI",
+  "license": "Apache-2.0",
+  "private": true,
+  "dependencies": {
+    "@adobe/aio-lib-files": "^4.1.2",
+    "@adobe/aio-lib-ims": "^8.1.0",
+    "@adobe/aio-lib-state": "^5.1.0",
+    "@adobe/aio-sdk": "^6",
+    "@adobe/exc-app": "^1.3.0",
+    "@adobe/react-spectrum": "^3.43.0",
+    "@adobe/uix-guest": "^1.0.3",
+    "core-js": "^3.6.4",
+    "dotenv": "^17.2.3",
+    "got": "^14.6.5",
+    "oauth-1.0a": "^2.2.6",
+    "qs": "^6.12.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-error-boundary": "^5.0.0",
+    "react-router": "^7.7.1",
+    "regenerator-runtime": "^0.14.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-plugin-jest": "^29.2.1",
+    "jest": "^30.2.0",
+    "vitest": "^4.0.15",
+    "wait-for-expect": "^4.0.0"
+  },
+  "scripts": {
+    "test": "jest --passWithNoTests ./test",
+    "e2e": "jest --collectCoverage=false --testRegex ./e2e",
+    "lint": "eslint --ignore-pattern web-src --no-error-on-unmatched-pattern test src actions",
+    "lint:fix": "npm run lint -- --fix",
+    "sync-oauth-credentials": "node -e \"require('./scripts/sync-oauth-credentials').main()\""
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
