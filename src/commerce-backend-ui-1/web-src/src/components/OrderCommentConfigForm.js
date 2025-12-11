@@ -48,11 +48,6 @@ export default function OrderCommentConfigForm(props) {
     }
   };
 
-  const links = [
-    { label: "Fulcrum Digital", url: "https://fulcrumdigital.com/" },
-    { label: "Contact Us", url: "info@fulcrumdigital.com" }
-  ];
-
   return (
     <View padding="size-250">
       <Form maxWidth="size-6000">
@@ -86,34 +81,6 @@ export default function OrderCommentConfigForm(props) {
             {saveStatusMsg}
           </Content>
         )}
-
-        <br />
-        <br />
-        <Heading level={3}>Support</Heading>
-        <Grid columns={["1fr 1fr"]} gap="size-200" width="size-3600">
-          {links.map((link) => (
-            <View
-              key={link.url}
-              borderWidth="thin"
-              borderColor="dark"
-              padding="size-200"
-              borderRadius="medium"
-              onClick={() => {
-                window.parent.postMessage(
-                  { type: "open-link", url: link.url },
-                  "*",
-                );
-              }}
-              role="button"
-              tabIndex={0}
-              style={{ cursor: "pointer" }}
-            >
-              <Text>
-                <b>{link.label}</b>: {link.url}
-              </Text>
-            </View>
-          ))}
-        </Grid>
       </Form>
     </View>
   );
