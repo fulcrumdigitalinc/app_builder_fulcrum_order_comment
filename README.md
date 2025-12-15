@@ -9,9 +9,9 @@ It adds a configuration UI inside the Commerce Admin panel for enabling/disablin
 
 - [Overview](#overview)
 - [Prerequisites](#prerequisites)
-- [Create an App Builder Project](#create-an-app-builder-project)
-- [Initialize the Project](#initialize-the-project)
 - [Environment Variables](#environment-variables)
+- [Create an App Builder Project](#create-an-app-builder-project-in-developer-console)
+- [Initialize the Project](#initialize-app-builder-project)
 - [Usage](#usage)
 - [Changelog](#changelog)
 - [Support](#support)
@@ -57,26 +57,6 @@ composer require magento/out-of-process-custom-attributes=^0.2.0  --with-depende
 
 ------------------------------------------------------------------------
 
-## Create an App Builder Project
-
-1. Open Adobe Developer Console: https://console.adobe.io/
-2. Create a new project and add **App Builder**.
-3. Create workspaces (Stage/Production) and note the project/workspace IDs for deployment.
-4. Enable required services/APIs: **I/O Management API, Adobe Commerce as a Cloud Service, Adobe Commerce with Adobe ID (OAuth Web App), Api Mesh for Adobe Developer App Builder**.
-
-------------------------------------------------------------------------
-
-## Initialize the Project
-
-```bash
-aio app init
-npm install
-aio app use -w <Workspace>
-aio app build
-```
-
-------------------------------------------------------------------------
-
 ## Environment Variables
 
 Create a `.env` file from `env.dist` and fill what you need.
@@ -109,6 +89,44 @@ COMMERCE_ACCESS_TOKEN_SECRET=
 SaaS example: `COMMERCE_BASE_URL=https://na1.api.commerce.adobe.com/<tenant_id>/`  
 PaaS example: `COMMERCE_BASE_URL=https://yourcommerce.com/rest/default/`
 
+------------------------------------------------------------------------
+
+## Create an App Builder Project in Developer Console
+
+1. Log in to the [Adobe Developer Console](https://console.adobe.io/) and select the desired organization from the dropdown menu in the top-right corner
+2. Click **Create new project from template**.
+3. Select **App Builder**. The **Set up templated project** page displays.
+4. Specify a project title and app name. Mark the **Include Runtime with each workspace** checkbox.
+
+------------------------------------------------------------------------
+
+## Initialize App Builder project
+
+### 1. Navigate to the downloaded code and run:
+
+```bash
+aio login
+aio console org select
+aio console project select
+aio console workspace select
+aio app use --merge
+```
+### 2. Add required services to your project:
+```bash
+aio app add service
+```
+**Select the following from the list:**
+- I/O Management API;
+- Api Mesh for Adobe Developer App Builder;
+- Adobe Commerce with Adobe ID (OAuth Web App) - **PaaS Only**;
+- Adobe Commerce as a Cloud Service (If connecting to Adobe Commerce as a Cloud Service) - **SaaS only**;
+
+ ### 3. Deploy App Builder Actions:
+ - Deploy the App Builder actions using the Adobe I/O CLI:
+```bash
+aio app build
+aio app deploy
+```
 ------------------------------------------------------------------------
 
 ## Usage
